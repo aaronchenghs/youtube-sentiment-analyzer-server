@@ -1,9 +1,12 @@
-from src.model_training import train_model
+from src.model_training import  get_or_train_model
 from src.sentiment_analysis import analyze_comments
 from src.youtube_api import create_youtube_client, extract_video_id, fetch_comments
+import os
 
 
 def main():
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:\\Users\\vojoh\\OneDrive\\Desktop\\Projects\\youtube-sentiment-analyzer-server\\csc3730-project-team-had-0548b315ad9b.json'
+
     youtube = create_youtube_client()
 
     video_link = input("Enter YouTube video link: ")
@@ -13,7 +16,7 @@ def main():
     comments = fetch_comments(youtube, video_id)
 
     # Train the model
-    model = train_model()
+    model = get_or_train_model()
 
     # Analyze the comments
     analysis_results = analyze_comments(comments, model)

@@ -16,7 +16,7 @@ def analyze_comments(comments, trained_model):
     for comment in comments:
         # Predict sentiment for each comment
         prediction = trained_model.predict([comment])
-        if prediction == 0:  # Assuming 0 denotes positive and 1 denotes negative
+        if prediction == 0:
             positive_count += 1
         else:
             negative_count += 1

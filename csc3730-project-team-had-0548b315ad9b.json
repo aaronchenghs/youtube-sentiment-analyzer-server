@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "csc3730-project-team-had",
+  "private_key_id": "0548b315ad9bb038e2c1fbf51f8d0cf44d487244",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCx9lrXz1JLR50z\nYqQMFlHSKU3euknULedt4YmeZJTeY5D1bkF1DvHgyD6oGcWcNvn/X3BeE6dWrKBR\nYNUutMffcNT1+ZTifgC94hcdswNrKQBb3mICKVPya7EyHffM+ePi0LJVm/nrOWdY\nlU45edTwry07NNbpdbTGxTpLeY9zWZVurIHp+dlxNzrDrCW6zdGmaYcmzetAxIrK\nmltUI9WYadtqc7ZHRozWHaSVxGQOCYU3FtNCEH4BF9ja7x7tImkuhAyYkXbYNhC0\n1kraqWznTdBOaxtGpgUwZjkV9hopdO/ElBKfPCksDUBzunOhOTolh/F2QA9qFJAC\nfi4emZZbAgMBAAECggEAF8xWAZ4b5y1AfGqofWVOs8gKPcqzrMgmtq7+dEwHDGZM\nMEX6Qukot2KP3nLz1hwT+m6M3EfMjO6w0bEdUQ2j3OF92RbzLgajmsDtTm9t+ZqW\nDbMDcD6Ol1CHdahERwjzzJUUBBbDqQ0YIOR2fYEpVLZYWh6KztWKwzoEvasX39jV\ndPDCH+swgW9GVSo3YF6JsdlV6i5UcvIDHRyAj5lGQkfhCxqc4Qcn/RPxHGwW3vVc\n3ZX+fJ7+GMa7Vf4pBZRfUHqb2grhDZEsr5qihMCM5gRcC7IujHUu4oC11o6vYy6p\n5zalOkzq2sNHdLU1UYhS18FLN0QRuOh2entUn9ZfgQKBgQDyC6DIX8ukv2oYGqkd\ntVI7CiBADHA4BG4J4wE3t+SdwDIgiDrlIiaB/xYZrZw5v9JGUKs1W50xVND/zFt1\nmRrg8HQdciH6fhD8VPnArbrE704W8ktyYAEx7h3mt7knjf3o4nuGorm/yyDjbbhg\nhGZPrgYYXXM/nOnykWK1oczJawKBgQC8OOsJUqRv6j4C3c7ndsNiuLUDO2zQDu50\nT7ceWXoNU8YQF0cwYaXpxFY63BZPI3HnxFX/vLHY48CX9Ho3/9zb4EyQuRvag3ET\n4mS3D4Pud1HNsE0plVR1F/9nEgrEDL3NG8y0Jvoj++jpAAeftbi7foODjW3KZe51\noTF2hoby0QKBgBBeWPE0CUGK8FHQ+77WlEkJ1kR+ktg29HoWr+5ksUE5zioFDHaS\naKhB5+y0oOwG3OGEcw+Ysnizk6640zaQtBCiMjgLj+CwxdVKqdkt5oOK620B1bhW\nZb5KrBr+MbdLEvC84D2qo4Uk54R51w4v5ftdeWwMZc7Xfbq5ukMuPfshAoGAC2BB\nTGHzUFRPBStUywaRjpDtV9GqpPSSEvOSdMIhr1aF3QkbI2Bzf6p/L7WHn6bbxo9G\nR1unQB2b0VNUY7gSKDPpTMHzXgSdu/7t6WaFqc8KYa0rLL06yoz1wcwEXI8Mla39\ndFH6wlwCWrrGuy9nh+WAm13b6eS5QeDJNYmx9FECgYEAnXH0fjlEZax5jC7ozLGB\nPdq3WRy6i/NNEhxAlKN+qlRyLhd7o3sxLO/b52AQuypSeWKVgRbeKwOnlmC+9fst\nEqR0HRHRdmkmzOfn07X8JZ/wubZB0/Kg6qlJLRNfh7M8Jz8Z+MRseINmmnQb32qb\ndY881qdY5AF/V1Eo3kvFyUI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "youtube-sentiment-analyzer-ser@csc3730-project-team-had.iam.gserviceaccount.com",
+  "client_id": "112020626634528101867",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/youtube-sentiment-analyzer-ser%40csc3730-project-team-had.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

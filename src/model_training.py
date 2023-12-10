@@ -1,3 +1,6 @@
+import os
+
+import joblib
 import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -5,6 +8,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split, GridSearchCV
 from imblearn.pipeline import make_pipeline as make_pipeline_imb
 from sklearn.naive_bayes import MultinomialNB
+
+from constants import trained_model_path
 
 
 def load_data(file_path, test_size=0.2, random_state=42):
@@ -59,5 +64,19 @@ def train_model():
     predictions = model.predict(test_data['Text'])
     accuracy = accuracy_score(test_data['IsToxic'], predictions)
     print(f"{MultinomialNB().__class__.__name__} Accuracy:", accuracy)
+
+    joblib.dump(model, 'trained_model.joblib')
+    return model
+
+def get_or_train_model():
+    # Check if the model has already been trained and saved
+    if os.path.exists(trained_model_path):
+        # Load the pre-trained model
+        model = joblib.load(trained_model_path)
+        print("Loaded pre-trained model.")
+    else:
+        # Train and save the model
+        model = train_model()
+        print("Trained and saved new model.")
 
     return model

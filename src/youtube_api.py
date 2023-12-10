@@ -1,21 +1,14 @@
+from google.oauth2 import service_account
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-from constants import credentials_path, SCOPES, redirect_uri
+from constants import credentials_path, SCOPES, redirect_uri, service_account_file
 
 
 def create_youtube_client():
-    # Step 1: The flow will redirect the user to Google's authorization server
-    flow = InstalledAppFlow.from_client_secrets_file(credentials_path, SCOPES, redirect_uri=redirect_uri)
-    auth_url, _ = flow.authorization_url(access_type='offline')
-    print('Please go to this URL and authorize access:', auth_url)
+    credentials = service_account.Credentials.from_service_account_file(
+        service_account_file, scopes=SCOPES)
 
-    # Step 2: The user will get an authorization code. This code is used to get the access token.
-    auth_code = input('Enter the authorization code: ')
-    flow.fetch_token(code=auth_code)
-
-    # Step 3: Create the YouTube client
-    credentials = flow.credentials
     youtube = build('youtube', 'v3', credentials=credentials)
 
     return youtube

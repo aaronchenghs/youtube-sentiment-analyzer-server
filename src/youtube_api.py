@@ -52,3 +52,18 @@ def fetch_comments(youtube, video_id):
             break
 
     return comments
+
+
+def fetch_video_details(youtube, video_id):
+    request = youtube.videos().list(
+        part="snippet",
+        id=video_id
+    )
+    response = request.execute()
+
+    if 'items' in response and len(response['items']) > 0:
+        video_title = response['items'][0]['snippet']['title']
+        return video_title
+    else:
+        return "Unknown Title"  # or handle this scenario appropriately
+

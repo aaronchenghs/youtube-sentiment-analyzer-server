@@ -31,9 +31,19 @@ def analyze_video():
     # Analyze the comments
     analysis_results = analyze_comments(comments, model)
 
-    # Return the analysis results along with the video title
-    return jsonify({"analysis_results": analysis_results, "video_title": video_title})
+    # Prepare the response with both counts and comments
+    response_data = {
+        "video_title": video_title,
+        "analysis_results": {
+            "total_comments": analysis_results["total_comments"],
+            "details": analysis_results["details"],
+            "label_comments": analysis_results["label_comments"]
+        }
+    }
+
+    # Return the response
+    return jsonify(response_data)
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

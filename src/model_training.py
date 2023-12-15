@@ -4,9 +4,10 @@ import joblib
 import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split, GridSearchCV
-from imblearn.pipeline import make_pipeline as make_pipeline_imb
+from imblearn.pipeline import make_pipeline as make_pipeline_imb, make_pipeline
+from sklearn.multioutput import MultiOutputClassifier
 from sklearn.naive_bayes import MultinomialNB
 
 from constants import trained_model_path
@@ -38,34 +39,32 @@ def load_data(file_path, test_size=0.2, random_state=42):
 
 
 def train_model():
-    # Create a pipeline with TfidfVectorizer and SMOTE for handling class imbalance
-    pipeline = make_pipeline_imb(
+    data = pd.read_csv('./youtoxic_english_1000.csv')
+    label_columns = ['IsToxic', 'IsAbusive', 'IsThreat', 'IsProvocative', 'IsObscene', 'IsHatespeech', 'IsRacist',
+                     'IsNationalist', 'IsSexist', 'IsHomophobic', 'IsReligiousHate', 'IsRadicalism']
+    X = data['Text']
+    y = data[label_columns]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    pipeline = make_pipeline(
         TfidfVectorizer(),
-        SMOTE(random_state=42),
-        MultinomialNB()
+        MultiOutputClassifier(MultinomialNB())
     )
 
-    # Set up the grid search parameters
     parameters = {
         'tfidfvectorizer__max_df': (0.75, 0.85),
-        'tfidfvectorizer__ngram_range': ((1, 1), (1, 2)),  # unigrams or bigrams
-        # Add other hyperparameters here
+        'tfidfvectorizer__ngram_range': ((1, 1), (1, 2))
     }
-    data = pd.read_csv('./youtoxic_english_1000.csv')
-    train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
     grid_search = GridSearchCV(pipeline, parameters, cv=5)
-    grid_search.fit(train_data['Text'], train_data['IsToxic'])
+    grid_search.fit(X_train, y_train)
 
-    # Best model after grid search
     model = grid_search.best_estimator_
+    predictions = model.predict(X_test)
+    print(classification_report(y_test, predictions))
 
-    # Evaluate the model
-    predictions = model.predict(test_data['Text'])
-    accuracy = accuracy_score(test_data['IsToxic'], predictions)
-    print(f"{MultinomialNB().__class__.__name__} Accuracy:", accuracy)
-
-    joblib.dump(model, 'trained_model.joblib')
+    joblib.dump(model, 'trained_multi_label_model.joblib')
     return model
 
 def get_or_train_model():

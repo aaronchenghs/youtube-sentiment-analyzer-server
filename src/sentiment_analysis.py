@@ -11,7 +11,7 @@ def analyze_comments(comments, trained_model):
     """
     label_names = ['IsToxic', 'IsAbusive', 'IsThreat', 'IsProvocative', 'IsObscene',
                    'IsHatespeech', 'IsRacist', 'IsNationalist', 'IsSexist',
-                   'IsHomophobic', 'IsReligiousHate', 'IsRadicalism']
+                   'IsHomophobic', 'IsReligiousHate', 'IsRadicalism', 'IsNegative']
 
     label_counts = {label: {"positive": 0, "negative": 0} for label in label_names}
     label_comments = {label: [] for label in label_names}  # New dictionary for storing comments

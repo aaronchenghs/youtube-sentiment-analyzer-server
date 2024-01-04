@@ -41,7 +41,7 @@ def load_data(file_path, test_size=0.2, random_state=42):
 def train_model():
     data = pd.read_csv('./training_data.csv')
     label_columns = ['IsToxic', 'IsAbusive', 'IsThreat', 'IsProvocative', 'IsObscene', 'IsHatespeech', 'IsRacist',
-                     'IsNationalist', 'IsSexist', 'IsHomophobic', 'IsReligiousHate', 'IsRadicalism']
+                     'IsNationalist', 'IsSexist', 'IsHomophobic', 'IsReligiousHate', 'IsRadicalism', 'IsNegative']
     X = data['Text']
     y = data[label_columns]
 
@@ -62,7 +62,6 @@ def train_model():
 
     model = grid_search.best_estimator_
     predictions = model.predict(X_test)
-    print(classification_report(y_test, predictions))
 
     joblib.dump(model, 'trained_multi_label_model.joblib')
     return model

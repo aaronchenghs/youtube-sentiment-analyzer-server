@@ -39,7 +39,7 @@ def load_data(file_path, test_size=0.2, random_state=42):
 
 
 def train_model():
-    data = pd.read_csv('./youtoxic_english_1000.csv')
+    data = pd.read_csv('./training_data.csv')
     label_columns = ['IsToxic', 'IsAbusive', 'IsThreat', 'IsProvocative', 'IsObscene', 'IsHatespeech', 'IsRacist',
                      'IsNationalist', 'IsSexist', 'IsHomophobic', 'IsReligiousHate', 'IsRadicalism']
     X = data['Text']

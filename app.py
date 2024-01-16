@@ -20,25 +20,24 @@ def analyze_video():
     youtube = create_youtube_client()
     video_id = extract_video_id(youtube_link)
 
-    video_title = fetch_video_details(youtube, video_id)  # Fetch the video title
+    video_title, video_genre = fetch_video_details(youtube, video_id)
 
     # Fetch the top 1000 comments
     comments = fetch_comments(youtube, video_id)
 
     # Train the model or get the pre-trained model
-    model = get_or_train_model()
+    model = get_or_train_model(video_genre)
 
-    # Analyze the comments
     analysis_results = analyze_comments(comments, model)
 
-    # Prepare the response with both counts and comments
     response_data = {
         "video_title": video_title,
         "analysis_results": {
             "total_comments": analysis_results["total_comments"],
             "details": analysis_results["details"],
             "label_comments": analysis_results["label_comments"]
-        }
+        },
+        "video_genre": video_genre
     }
 
     # Return the response

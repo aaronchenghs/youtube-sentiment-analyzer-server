@@ -55,15 +55,31 @@ def fetch_comments(youtube, video_id):
 
 
 def fetch_video_details(youtube, video_id):
-    request = youtube.videos().list(
+    # Fetch video details including the category ID
+    video_request = youtube.videos().list(
         part="snippet",
         id=video_id
     )
-    response = request.execute()
+    video_response = video_request.execute()
 
-    if 'items' in response and len(response['items']) > 0:
-        video_title = response['items'][0]['snippet']['title']
-        return video_title
+    if 'items' in video_response and len(video_response['items']) > 0:
+        video_title = video_response['items'][0]['snippet']['title']
+        category_id = video_response['items'][0]['snippet']['categoryId']
+
+        # Fetch the category name using the category ID
+        category_request = youtube.videoCategories().list(
+            part="snippet",
+            id=category_id
+        )
+        category_response = category_request.execute()
+
+        if 'items' in category_response and len(category_response['items']) > 0:
+            video_genre = category_response['items'][0]['snippet']['title']
+        else:
+            video_genre = "Unknown Genre"
+
+        return video_title, video_genre
     else:
-        return "Unknown Title"  # or handle this scenario appropriately
+        return "Unknown Title", "Unknown Genre"
+
 

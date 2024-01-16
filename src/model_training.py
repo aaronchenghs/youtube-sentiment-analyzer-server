@@ -39,7 +39,7 @@ def load_data(file_path, test_size=0.2, random_state=42):
 
 
 def train_model():
-    data = pd.read_csv('./training_data.csv')
+    data = pd.read_csv('./social-issues_training-data.csv')
     label_columns = ['IsToxic', 'IsAbusive', 'IsThreat', 'IsProvocative', 'IsObscene', 'IsHatespeech', 'IsRacist',
                      'IsNationalist', 'IsSexist', 'IsHomophobic', 'IsReligiousHate', 'IsRadicalism', 'IsNegative']
     X = data['Text']
@@ -66,7 +66,10 @@ def train_model():
     joblib.dump(model, 'trained_multi_label_model.joblib')
     return model
 
-def get_or_train_model():
+def get_or_train_model(video_genre):
+    # determine which model to run based on genre
+    print(video_genre)
+
     # Check if the model has already been trained and saved
     if os.path.exists(trained_model_path):
         # Load the pre-trained model

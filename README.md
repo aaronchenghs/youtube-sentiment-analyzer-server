@@ -1,4 +1,4 @@
-# YouTube Sentiment Analyzer Server
+# YouTube Sentiment Analyzer (Server)
 
 This repository houses the backend server for our CSC3730 Machine Learning project, which supports the [YouTube Sentiment Analyzer Client](https://github.com/aaronchenghs/Youtube-Sentiment-Analyzer-Client). It is a Python-based server utilizing the YouTube API and pandas for processing and analyzing YouTube comments to assess video sentiment.
 
